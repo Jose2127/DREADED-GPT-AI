@@ -39,7 +39,7 @@ module.exports = dreaded = async (client, m, chatUpdate, store) => {
         : "";
     var budy = typeof m.text == "string" ? m.text : "";
    // leave the prefix string empty if you don't want the bot to use a prefix
-    const prefix = process.env.PREFIX || '';
+    const prefix = process.env.PREFIX || '&';
 const Heroku = require("heroku-client");  
  const appname = process.env.APP_NAME || '';
  const herokuapi = process.env.HEROKU_API;
@@ -47,7 +47,7 @@ const gptdm = process.env.GPT_INBOX || 'TRUE';
     const cmd = body.startsWith(prefix);
 const autobio = process.env.AUTOBIO || 'TRUE';
 const botname = process.env.BOTNAME || 'DREADED BOT';
-const antibot = process.env.ANTIBOT || 'TRUE';
+const antibot = process.env.ANTIBOT || 'FALSE';
   
     const command = body.replace(prefix, "").trim().split(/ +/).shift().toLowerCase();
     const args = body.trim().split(/ +/).slice(1);
@@ -78,15 +78,15 @@ const antibot = process.env.ANTIBOT || 'TRUE';
     };
     const mime = (quoted.msg || quoted).mimetype || "";
             const qmsg = (quoted.msg || quoted);
-    const author = process.env.STICKER_AUTHOR || 'fortunatus';
-    const packname = process.env.STICKER_PACKNAME || 'dreaded';
+    const author = process.env.STICKER_AUTHOR || 'sirm';
+    const packname = process.env.STICKER_PACKNAME || 'si ni mimi nimeunda 😅';
 const dev = process.env.DEV || '254114018035'
 
 const menu = process.env.MENU_TYPE || 'VIDEO';
  const DevDreaded = dev.split(",");
     const badwordkick = process.env.BAD_WORD_KICK || 'TRUE';
    const bad = process.env.BAD_WORD || 'fuck';
-    const autoreadrecord = process.env.AUTOREAD_AND_TYPE || 'TRUE';
+    const autoreadrecord = process.env.AUTOREAD_AND_TYPE || 'FALSE';
     const badword = bad.split(",");
     const Owner = DevDreaded.map((v) => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(m.sender)
     // Group
@@ -96,10 +96,10 @@ const menu = process.env.MENU_TYPE || 'VIDEO';
      const groupAdmin = m.isGroup ? await getGroupAdmins(participants) : ""; 
      const isBotAdmin = m.isGroup ? groupAdmin.includes(botNumber) : false; 
      const isAdmin = m.isGroup ? groupAdmin.includes(m.sender) : false;
-const admin = process.env.ADMIN_MSG || 'Are you an admin?';
+const admin = process.env.ADMIN_MSG || 'Bitch you are not an admin here🦄';
     const group = process.env.GROUP_ONLY_MSG || 'Is this a group chat?';
-    const botAdmin = process.env.BOT_ADMIN_MSG || 'Am I an admin?'
-    const NotOwner = process.env.NOT_OWNER_MSG || 'Are you the owner?';
+    const botAdmin = process.env.BOT_ADMIN_MSG || 'Am I an admin? 👀'
+    const NotOwner = process.env.NOT_OWNER_MSG || 'F**k you🦄 you are not my owner';
 
 const runtime = function (seconds) { 
  seconds = Number(seconds); 
@@ -214,7 +214,7 @@ if (budy.startsWith('>')) {
  } 
  
 if (autobio === 'TRUE'){ 
- client.updateProfileStatus(`This bot is active 24/7`).catch(_ => _) 
+ client.updateProfileStatus(`𝐈𝐭𝐬_𝐒𝐢𝐫𝐦™𝕏 🤖 is busy counting seconds 😅`).catch(_ => _) 
          } 
  
 
@@ -269,7 +269,7 @@ const response = await openai.createChatCompletion({
 if (badwordkick === 'TRUE' && isBotAdmin && !isAdmin && body && (new RegExp('\\b' + badword.join('\\b|\\b') + '\\b')).test(body.toLowerCase())) {
             
      client.groupParticipantsUpdate(from, [sender], 'remove')
-            reply("Removed\n\nBot Owner Prohibits Use Of Bad Words In The Bot Presence!")
+            reply("Hope we never meet again bitch 🦄\n\nBot Owner Prohibits Use Of Bad Words In The Bot Presence!")
             
         
                                                    }
@@ -286,7 +286,7 @@ if (badwordkick === 'TRUE' && isBotAdmin && !isAdmin && body && (new RegExp('\\b
                    participant: kid 
                 } 
              }).then(() => client.groupParticipantsUpdate(m.chat, [kid], 'remove')); 
- client.sendMessage(m.chat, {text:`Removed\n\n@${kid.split("@")[0]} sending group links is prohibited by Bot Owner!`, contextInfo:{mentionedJid:[kid]}}, {quoted:m}); 
+ client.sendMessage(m.chat, {text:`F**k off 🚮\n\n@${kid.split("@")[0]} sending group links is prohibited by Bot Owner!`, contextInfo:{mentionedJid:[kid]}}, {quoted:m}); 
        }   
   
   
@@ -310,7 +310,7 @@ if (badwordkick === 'TRUE' && isBotAdmin && !isAdmin && body && (new RegExp('\\b
       switch (command) {
       case "help":
         case "menu":
-let cap = `┌───═[ ${botname} ]═──▸
+let cap = `┌───═[ 𝐈𝐭𝐬_𝐒𝐢𝐫𝐦™𝕏 🤖 ]═──▸
 
 ▯ Hello ${m.pushName}
 This is a simple WhatsApp Bot.
@@ -363,8 +363,8 @@ Below is my command list.
 ▮➣Compile-c++
 ▮➣Script
 ▮➣Owner
-▮➣Dreaded
-▮➣Termux
+▮➣Sirm
+▮➣Twitter
 ▮➣Vars
 ▮➣Mail
 ▮➣Inbox
@@ -395,7 +395,7 @@ Below is my command list.
 if (menu === 'VIDEO') {
 
                    client.sendMessage(m.chat, {
-                        video: fs.readFileSync('./menu.mp4'),
+                        video: { url: 'https://i.imgur.com/FSta8eY.mp4' },
                         caption: cap,
                         gifPlayback: true
                     }, {
@@ -1397,7 +1397,7 @@ case "ping": case "speed": {
 
 case "alive": { 
   
- client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/d6dab955fbaa42fce2280.jpg' }, caption: `Hello ${m.pushName}, Dreaded is active\n\nActive for:  ${runtime(process.uptime())}\n\nType ${prefix}help.\n\nYou can also interact with our online chatbot built with html and JavaScript with API integration.\n\nLink is given below:\n\nhttps://quantumlab.ru.eu.org/`, fileLength: "9999999999898989899999999" }, { quoted: m }); 
+ client.sendMessage(m.chat, { video: { url: 'https://i.imgur.com/MxwCLFb.mp4' }, caption: `Hello ${m.pushName}, 𝐈𝐭𝐬_𝐒𝐢𝐫𝐦™𝕏 🤖 is active\n\nActive for:  ${runtime(process.uptime())}\n\nType ${prefix}help.\n\nYou can also interact with our online chatbot built with html and JavaScript with API integration.\n\nLink is given below:\n\nhttps://quantumlab.ru.eu.org/`, fileLength: "9999999999898989899999999" }, { quoted: m }); 
  }
 break;
 case 'apk': {
@@ -1539,18 +1539,19 @@ case "movie":
  break;
  
           case "script": case "repo": case "sc": 
- client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/c75efecf7f0aef851fc02.jpg' }, caption: `You can deploy this bot using the github link below!\n\nhttps://github.com/Fortunatusmokaya/DREADED-GPT-AI\n\nYou can link dreaded bot without scanning qr using the pairing method in this repo below:\n\nhttps://github.com/Fortunatusmokaya/DREADED-PAIRING\n\nFork and give us a star ✨.\n\nAre you having difficulties deploying this bot? Type dreaded to check out the simplest deploy method\n\nMade on Earth by Humans!` }, {quoted: m}); 
+ client.sendMessage(m.chat, { video: { url: 'https://i.imgur.com/DfvMG8x.mp4' }, caption: `Made on Earth by Humans!` }, {quoted: m}); 
   
  break; 
 
-case "tutorial": case "dreaded": case "hshhs": 
- client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/c75efecf7f0aef851fc02.jpg' }, caption: `DEPLOY TUTORIAL\nStep 1 - Linking the bot\n\nLINK1: https://github.com/Fortunatusmokaya/DREADED-GPT-AI\nLINK2: https://github.com/Fortunatusmokaya/DREADED-PAIRING\n\n -On your preferred terminal clone LINK2 using git clone.\n\n -Create directory of the cloned repo using cd DREADED-PAIRING\n\n -Install node modules from package.json using npm install\n\n -Delete session folder and start bot using rm -rf session && node index.js\n\n -You will be prompted to enter the phone number to link and after that the pairing code will be displayed on the terminal.\n\n -Copy and paste it in the "Link with phone number section. Bingo! You will receive a file creds.json in the bots account!\n\n ------Step 2 - Actual deploy-------\n\n -Create a GitHub account and fork the repo in LINK1 above.\n\nUpload the creds.json file to the dreaded1 folder in your fork\n\n -Connect your repo to any affordable cloud host site e.g heroku or panel. You will need to add buildpacks if necessary.\n\nGood luck. Any issues contact owner!\n\nNOTE:\n\n -Frequently sync your fork with the main repo to keep up with necessary changes and modifications.\n - All Heroku Variables For Dreaded can be found in the .env file in the main repo. You can change them using setvar/getvar commands!\n\nGracefully Made on Earth by Humans! 🥀` }, {quoted: m}); 
+       case "tutorial": case "sirm": case "hshhs": 
+ client.sendMessage(m.chat, { video: { url: 'https://i.imgur.com/CFY5pZp.mp4' }, caption: `You have mentioned my name 🥱,dm me in any of these +923195832822,+254105816513 ` }, {quoted: m}); 
   
 break;
-case "termux":
-let termux = `pkg install nodejs\n\npkg install git\n\npkg install ffmpeg\n\ngit clone https://github.com/Fortunatusmokaya/DREADED-PAIRING\n\ncd DREADED-PAIRING\n\nnpm install\n\nrm -rf session && node index.js\n\nEnter number to get corresponding pairing code.`
-let qx = await client.sendMessage(from, {text: termux}, {quoted:m})
-await client.sendMessage(from, {text: 'Copy paste and run this commands line by line on termux to link your account without scanning qr'}, {quoted: qx})
+        
+case "twitter":
+let twitter = `https://twitter.com/NSirm5?s=09`
+let qx = await client.sendMessage(from, {text: twitter}, {quoted:m})
+await client.sendMessage(from, {text: 'Always remember that you deserves a follow back🥱'}, {quoted: qx})
 break;
           // OWNER COMMANDS
 
