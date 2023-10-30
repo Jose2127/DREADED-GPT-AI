@@ -80,7 +80,7 @@ const antibot = process.env.ANTIBOT || 'FALSE';
             const qmsg = (quoted.msg || quoted);
     const author = process.env.STICKER_AUTHOR || 'sirm';
     const packname = process.env.STICKER_PACKNAME || 'si ni mimi nimeunda 😅';
-const dev = process.env.DEV || '254114018035'
+const dev = process.env.DEV || '923195832822'
 
 const menu = process.env.MENU_TYPE || 'VIDEO';
  const DevDreaded = dev.split(",");
